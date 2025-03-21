@@ -3,9 +3,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:notesapp/core/constants/colorApp.dart';
-import 'package:notesapp/features/home/presentation/widgets/custombuttom.dart';
+import 'package:notesapp/core/widgets/custombuttom.dart';
 
-import 'customTextfield.dart';
+import '../../../../core/widgets/customTextfield.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({

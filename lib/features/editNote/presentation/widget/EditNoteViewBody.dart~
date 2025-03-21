@@ -1,6 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:notesapp/core/widgets/customTextfield.dart';
+import 'package:notesapp/features/home/presentation/widgets/customTextfield.dart';
 
 import '../../../../core/widgets/customAppBar.dart';
 
@@ -16,7 +16,7 @@ class EditNoteViewBody extends StatelessWidget {
         children: [
           SizedBox(height: 40,),
           CustomAppBar(title:"Edit Note",icon: CupertinoIcons.check_mark,),
-          SizedBox(height: 50,),
+          SizedBox(height: 20,),
           CustomTextField(hintText: "Title"),
           SizedBox(height: 20,),
           CustomTextField(hintText: "content",maxLines: 5,)

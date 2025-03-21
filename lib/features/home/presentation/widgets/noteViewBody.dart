@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notesapp/core/widgets/customAppBar.dart';
 
-import 'customItemNote.dart';
+import '../../../../core/widgets/customItemNote.dart';
 import 'ListViewNote.dart';
 
 class NoteViewBody extends StatelessWidget {
