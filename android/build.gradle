@@ -2,6 +2,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
@@ -15,4 +16,13 @@ subprojects {
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+buildscript {
+    repositories {
+        google()           // Required for Android Gradle Plugin
+        mavenCentral()     // Required for other dependencies
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.1'
+    }
 }
