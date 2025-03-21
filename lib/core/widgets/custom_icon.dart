@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomSearchIcon extends StatelessWidget {
+class CustomIcon extends StatelessWidget {
  final IconData icon;
-  const CustomSearchIcon({
+  const CustomIcon({
     super.key,
     required this.icon,
   });
