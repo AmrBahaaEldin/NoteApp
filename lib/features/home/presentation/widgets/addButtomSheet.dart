@@ -11,7 +11,6 @@ class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
@@ -22,19 +21,56 @@ class AddNoteBottomSheet extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 20,),
-             CustomTextField(hintText: "Title",),
-             SizedBox(height: 20,),
-             CustomTextField(hintText: "content",
-             maxLines: 5,),
-              SizedBox(height: 30,),
+        child: FormAddNote(),
+      ),
+    );
+  }
+}
 
-              CustomButton(),
-            ],
-          ),
+class FormAddNote extends StatefulWidget {
+  const FormAddNote({
+    super.key,
+
+  });
+
+  @override
+  State<FormAddNote> createState() => _FormAddNoteState();
+}
+class _FormAddNoteState extends State<FormAddNote> {
+  GlobalKey<FormState>formKey=GlobalKey();
+  AutovalidateMode autoValidateMode=AutovalidateMode.disabled;
+  String? title,content;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      autovalidateMode:autoValidateMode,
+      key: formKey,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 20,),
+           CustomTextField(hintText: "Title",onSave: (value) {
+             title=value;
+           },),
+           SizedBox(height: 20,),
+           CustomTextField(hintText: "content",onSave: (value) {
+             content=value;
+           },
+           maxLines: 5,),
+            SizedBox(height: 30,),
+
+            CustomButton(text: "Add",onTap:
+              () {
+               if( formKey.currentState!.validate()){
+                formKey.currentState!.save();
+               }
+               else{
+                 setState(() {
+                   autoValidateMode=AutovalidateMode.always;
+                 });
+               }
+              },),
+          ],
         ),
       ),
     );

@@ -6,16 +6,26 @@ import '../constants/colorApp.dart';
 class CustomTextField extends StatelessWidget {
  final String hintText;
 final int? maxLines ;
+ final void Function(String?)? onSave;
 
   const CustomTextField({
     super.key,
     required this.hintText,
     this.maxLines,
+    this.onSave
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSave,
+      validator: (value) {
+        if(value?.isEmpty??true){
+          return 'Field is required';
+        }else{
+          return null;
+        }
+      },
       maxLines:maxLines??1,
       cursorColor:AppColor.primaryColor,
       decoration: InputDecoration(
