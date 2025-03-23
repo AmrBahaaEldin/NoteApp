@@ -14,9 +14,7 @@ class CustomListView extends StatelessWidget {
         List<NoteModel>notes=BlocProvider.of<NoteCubit>(context).notes??[];
         return ListView.builder(
           itemCount: notes.length,
-          itemBuilder: (context, index) => CustomItemNote(
-            note: notes[index],
-          ),
+          itemBuilder: (context, index) => CustomItemNote(),
         );
       },
     );

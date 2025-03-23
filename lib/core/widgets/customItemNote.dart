@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:notesapp/features/editNote/presentation/editNote.dart';
-import 'package:notesapp/features/editNote/presentation/widget/EditNoteViewBody.dart';
+import 'package:notesapp/features/home/data/note_model.dart';
 
 class CustomItemNote extends StatelessWidget {
-  const CustomItemNote({super.key});
-
+  const CustomItemNote({super.key, required this.note});
+final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,20 +20,20 @@ class CustomItemNote extends StatelessWidget {
         padding: EdgeInsets.only(top: 24,bottom: 24,left: 24,),
         decoration:BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Color(0xffFFCC80)
+          color: Color(note.color)
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
               contentPadding: EdgeInsets.zero,
-              title: Text("Flutter Tips",style: TextStyle(
+              title: Text(note.title,style: TextStyle(
                 color: Colors.black,
                 fontSize: 26
               ),),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16,bottom: 16),
-                child: Text("Build your career with Amr BahaaELdin",style: TextStyle(
+                child: Text(note.subtitle,style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey.shade600,
                 ),),
@@ -44,7 +44,7 @@ class CustomItemNote extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24),
-              child: Text("12/5/2023",style: TextStyle(color:Colors.grey.shade600,fontSize: 16),),
+              child: Text(note.date,style: TextStyle(color:Colors.grey.shade600,fontSize: 16),),
             )
           ],
         ),
