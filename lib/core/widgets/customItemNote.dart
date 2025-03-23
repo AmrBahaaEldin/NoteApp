@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:notesapp/features/editNote/presentation/editNote.dart';
 import 'package:notesapp/features/home/data/note_model.dart';
+import 'package:notesapp/features/home/logic/show/note_cubit.dart';
 
 class CustomItemNote extends StatelessWidget {
   const CustomItemNote({super.key, required this.note});
@@ -41,6 +43,7 @@ final NoteModel note;
               ),
               trailing: IconButton(onPressed: () {
                 note.delete();
+                BlocProvider.of<NoteCubit>(context).fetchNote();
               }, icon:Icon( CupertinoIcons.trash,color: Colors.black,size: 22,),),
 
             ),

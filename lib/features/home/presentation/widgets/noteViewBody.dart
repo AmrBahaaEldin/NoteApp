@@ -12,18 +12,15 @@ class NoteViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NoteCubit()..fetchNote(),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            SizedBox(height: 40,),
-            CustomAppBar(title: "Notes", icon: CupertinoIcons.search,),
-            Expanded(child: CustomListView()),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          SizedBox(height: 40,),
+          CustomAppBar(title: "Notes", icon: CupertinoIcons.search,),
+          Expanded(child: CustomListView()),
 
-          ],
-        ),
+        ],
       ),
     );
   }

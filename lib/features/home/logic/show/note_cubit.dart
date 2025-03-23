@@ -13,6 +13,7 @@ class NoteCubit extends Cubit<NoteState> {
   fetchNote(){
     var noteBox =Hive.box<NoteModel>(KeyApp.keyBox);
    notes= noteBox.values.toList();
+   emit(NoteSuccess());
 
 
   }
