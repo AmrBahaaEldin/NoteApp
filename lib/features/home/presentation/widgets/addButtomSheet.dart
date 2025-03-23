@@ -1,9 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:notesapp/features/home/logic/add_note_cubit.dart';
-import '../../../../core/constants/colorApp.dart';
+import '../../logic/add/add_note_cubit.dart';
+import '../../logic/add/add_note_state.dart';
 import 'form_add_note.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
@@ -20,21 +19,25 @@ class AddNoteBottomSheet extends StatelessWidget {
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
             if (state is AddNoteError) {
-              debugPrint("${state.message}");
+              debugPrint(state.message);
             }
             if (state is AddNoteSuccess) {
               Navigator.pop(context);
             }
           },
           builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading ? true : false,
-
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: FormAddNote(),
-              ),
-            );
+            return
+              AbsorbPointer(
+                absorbing: state is AddNoteLoading ? true : false,
+                child: Container(
+                color: Colors.black,
+                child: Padding(
+                  padding:  EdgeInsets.only(
+                      right: 16.0,left: 16,bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: FormAddNote(),
+                ),
+                            ),
+              );
           },
         ),
       ),

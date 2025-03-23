@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
-import 'package:hive/hive.dart';
-import 'package:meta/meta.dart';
-import 'package:notesapp/core/constants/keyApp.dart';
-import 'package:notesapp/features/home/data/note_model.dart';
 
-part 'add_note_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+
+import '../../../../core/constants/keyApp.dart';
+import '../../data/note_model.dart';
+import 'add_note_state.dart';
 
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());

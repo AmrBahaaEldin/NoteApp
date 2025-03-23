@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/features/home/data/note_model.dart';
-import 'package:notesapp/features/home/logic/add/add_note_cubit.dart';
-import 'package:notesapp/features/home/logic/add/add_note_state.dart';
-
+import 'package:notesapp/features/home/logic/add_note_cubit.dart';
 
 import '../../../../core/widgets/customTextfield.dart';
 import '../../../../core/widgets/custombuttom.dart';
-
 
 class FormAddNote extends StatefulWidget {
   const FormAddNote({

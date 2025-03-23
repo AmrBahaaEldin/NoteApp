@@ -12,8 +12,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await Hive.initFlutter();
+  Hive.registerAdapter(NoteModelAdapter());
  await Hive.openBox<NoteModel>(KeyApp.keyBox);
- Hive.registerAdapter(NoteModelAdapter());
+
 
   runApp(const NoteApp());
 }
