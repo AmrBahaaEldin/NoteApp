@@ -40,7 +40,7 @@ final NoteModel note;
                 ),),
               ),
               trailing: IconButton(onPressed: () {
-                note.delete();
+                note.delete(); 
               }, icon:Icon( CupertinoIcons.trash,color: Colors.black,size: 22,),),
 
             ),
