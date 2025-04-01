@@ -4,10 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:notesapp/features/home/data/note_model.dart';
 import 'package:notesapp/features/home/logic/add/add_note_cubit.dart';
 import 'package:notesapp/features/home/logic/add/add_note_state.dart';
-
-
 import '../../../../core/widgets/customTextfield.dart';
 import '../../../../core/widgets/custombuttom.dart';
+import 'list_color_select_view.dart';
 
 
 class FormAddNote extends StatefulWidget {
@@ -54,29 +53,36 @@ class _FormAddNoteState extends State<FormAddNote> {
             SizedBox(
               height: 30,
             ),
-        BlocBuilder<AddNoteCubit, AddNoteState>(
-                builder: (context, state) {
-                  return CustomButton(
-                    isLoading: state is AddNoteLoading ? true : false,
-                    text: "Add",
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        var note = NoteModel(
-                            title: title!,
-                            subtitle: content!,
-                            date: DateFormat("yyyy-MM-dd").format(DateTime.now()).toString(),
-                            color: Colors.blue.hashCode);
-                        BlocProvider.of<AddNoteCubit>(context).addNote(note);
-                      } else {
-                        setState(() {
-                          autoValidateMode = AutovalidateMode.always;
-                        });
-                      }
-                    },
-                  );
-                },
-              ),
+             ListColorSelected(),
+
+            SizedBox(
+              height: 30,
+            ),
+            BlocBuilder<AddNoteCubit, AddNoteState>(
+              builder: (context, state) {
+                return CustomButton(
+                  isLoading: state is AddNoteLoading ? true : false,
+                  text: "Add",
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      var note = NoteModel(
+                          title: title!,
+                          subtitle: content!,
+                          date: DateFormat("yyyy-MM-dd")
+                              .format(DateTime.now())
+                              .toString(),
+                          color: Colors.blue.value);
+                      BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                    } else {
+                      setState(() {
+                        autoValidateMode = AutovalidateMode.always;
+                      });
+                    }
+                  },
+                );
+              },
+            ),
 
           ],
         ),
@@ -84,3 +90,5 @@ class _FormAddNoteState extends State<FormAddNote> {
     );
   }
 }
+
+
