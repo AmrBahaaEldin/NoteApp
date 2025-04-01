@@ -2,7 +2,9 @@
 
 A new Flutter project.
 
-## Getting Started
+# Getting Started
+#Using Cubit state management
+#Data Base  :Hive => Local Data Base 
 
 This project is a starting point for a Flutter application.
 
